@@ -12,14 +12,16 @@
                     <p class="product-description">{{item.product.description}}</p>
                     <p>{{item.product.price}}</p>
                     <p>
-                        <form class="form-inline" method="POST" action="{% url 'adjust_cart' product.id %}}">
+                        <form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}}">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="exampleInputAmount" class="sr-only">New Qty</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">Qty</div>
                                     <input name="quantity" type="number" min="0" max="999" class="form-control">
-                                    <div class="input-group-addon">{{item.quantity}}</div> 
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">{{item.quantity}}</div>
+                                    </div>
                                 </div>
                                 <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-edit" aria-hidden="true">Amend</span> </button>
@@ -33,9 +35,9 @@
     </div>
     <div class="row">
         <p>Total</p>
-        <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+        <p><i class="fas fa-euro-sign"></i>
             {{total}}
         </p>
-        <a href="/" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+        <a href="/" class="btn btn-success" role="button"><i class="far fa-check-square"></i>Checkout</a>
     </div>
 {% endblock %}
