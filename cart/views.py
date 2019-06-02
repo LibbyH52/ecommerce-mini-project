@@ -16,7 +16,7 @@ def add_to_cart(request, id):
     return redirect(reverse('index'))
     
 
-def adjust_cart(request):
+def adjust_cart(request, id):
     """
     Adjust the qunatity of a specified product
     by a specified amount
