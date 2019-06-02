@@ -8,7 +8,7 @@ from .models import OrderLineItem
 from products.models import Product
 import stripe
 
-stripe_api_key = settings.STRIPE_SECRET
+stripe.api_key = settings.STRIPE_SECRET
 
 @login_required
 def checkout(request):
@@ -19,6 +19,7 @@ def checkout(request):
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
+            
             cart = request.session.get('cart', {})
             total = 0
             
